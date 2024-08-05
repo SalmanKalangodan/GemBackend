@@ -35,6 +35,9 @@ const companySchema = new mongoose.Schema({
     password : {
         type: String,
         required : true
+    },
+    users : {
+        type: String
     }
 })
 

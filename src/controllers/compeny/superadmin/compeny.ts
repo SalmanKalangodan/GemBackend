@@ -1,11 +1,12 @@
-import Company from "../../models/compeny/compeny_scheema";
+import Company from "../../../models/compeny/superadmin/compeny_scheema";
 import {Request , Response} from "express"
 import bcrypt from 'bcrypt'
+import Users from "../../../models/compeny/users/users_scheema";
 
 
 export const compony_register = async(req:Request , res : Response):Promise<Response>=>{
+console.log("abc");
 
-try {
     const {name , password , email , address } = req.body
     
     const company = await Company.findOne({email})
@@ -23,10 +24,15 @@ try {
     })
 
     await ncompeny.save()
+
+    const new_user = new Users({
+        username : email,
+        password : npassword,
+        role : "superadmin"
+    })
+
+    await new_user.save()
+
     return res.status(201).json({message : "register successfuly" , ncompeny})
-} catch (error) {
-    console.log(error);
-    
-}
     
 } 

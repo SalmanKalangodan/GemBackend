@@ -1,15 +1,19 @@
 import express from 'express';
 import dotenv from "dotenv"
 import { mongodb } from './configs/db/db';
-import compeny_rotes from './routes/commen/compeny_rotes'
+import compeny_rotes from './routes/compeny/super_admin/compeny_rotes'
+import { errorHandler } from './middlewares/error/error_handler';
+dotenv.config()
 
 const app = express();
-const port = 3000;
-dotenv.config()
+
+const port = process.env.PORT || 3000
+
 
 app.use(express.json())
 app.use('/api/compenys',compeny_rotes)
 
+app.use(errorHandler)
 mongodb()
 
 
