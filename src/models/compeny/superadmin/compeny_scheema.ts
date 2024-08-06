@@ -36,9 +36,10 @@ const companySchema = new mongoose.Schema({
         type: String,
         required : true
     },
-    users : {
-        type: String
-    }
+    users : [{
+        type: mongoose.Schema.ObjectId,
+        ref:"Users"
+    }]
 })
 
 

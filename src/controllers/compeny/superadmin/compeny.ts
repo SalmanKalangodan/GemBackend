@@ -23,8 +23,6 @@ console.log("abc");
         address
     })
 
-    await ncompeny.save()
-
     const new_user = new Users({
         username : email,
         password : npassword,
@@ -32,6 +30,10 @@ console.log("abc");
     })
 
     await new_user.save()
+
+    ncompeny.users.push(new_user.id)
+
+    await ncompeny.save()
 
     return res.status(201).json({message : "register successfuly" , ncompeny})
     

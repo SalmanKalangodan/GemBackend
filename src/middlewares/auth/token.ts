@@ -22,7 +22,8 @@ export const auth = async (req :Request , res : Response ,next: NextFunction)=>{
         token,
         process.env.Accesstoken_secret as string
       ) as JwtPayload;
-  
+ 
+      req.email =decoded.email
       req.id = decoded.id
 
       next()
