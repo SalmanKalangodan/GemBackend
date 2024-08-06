@@ -40,7 +40,7 @@ const companySchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref:"Users"
     }]
-})
+})         
 
 
 const Company = mongoose.model('Company', companySchema);
