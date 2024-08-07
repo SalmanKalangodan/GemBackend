@@ -5,9 +5,9 @@ import Users from "../../../models/compeny/users/users_scheema";
 
 
 export const compony_register = async(req:Request , res : Response):Promise<Response>=>{
-console.log("abc");
 
-    const {name , password , email , address } = req.body
+
+    const {name , password , email  } = req.body
     
     const company = await Company.findOne({email})
 
@@ -20,7 +20,6 @@ console.log("abc");
         name,
         password : npassword,
         email,
-        address
     })
 
     const new_user = new Users({

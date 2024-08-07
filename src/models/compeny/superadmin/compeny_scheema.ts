@@ -26,7 +26,6 @@ const companySchema = new mongoose.Schema({
     },
     address:{
         type :addressSchema,
-        required : true
     },
     email:{
         type: String,
