@@ -6,9 +6,11 @@ import jwt from 'jsonwebtoken'
 
 export const login_compeny = async(req : Request , res : Response ) :Promise<Response> =>{
 
-    const {username , password } = req.body
+    const {email , password } = req.body
 
-    const admin  = await Users.findOne({username})
+    console.log(email , password);
+    
+    const admin  = await Users.findOne({username :email})
 
     if(!admin){
         return res.status(400).json({message : "compeny not found"})
