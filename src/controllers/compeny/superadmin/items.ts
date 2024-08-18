@@ -13,7 +13,7 @@ export const create_pr_id = async (req : Request , res : Response) : Promise<Res
 
 export const create_items = async (req : Request  , res : Response) : Promise <Response> =>{
 
-    const {id , name , companyName ,distributor , buyPrice , sellPrice , gstPercentage , type} = req.body
+    const {id , name , companyName ,distributor ,Brand, buyPrice , sellPrice , gstPercentage , type} = req.body
 
     const item = await Items.findOne({productname : name , Manufacturer : companyName})
 
@@ -22,8 +22,9 @@ export const create_items = async (req : Request  , res : Response) : Promise <R
     }
 
     let npid = id
-    const pr_id  = await Items.findOne({pr_id : id})
 
+    const pr_id  = await Items.findOne({pr_id : id})
+    
     if(pr_id) {
         npid = await Items.find({}).countDocuments()
     }
@@ -36,10 +37,11 @@ export const create_items = async (req : Request  , res : Response) : Promise <R
        buying_pricce : buyPrice,
        selling_price : sellPrice,
        gst : gstPercentage,
-       type 
+       type ,
+       Brand
     })
-    
-    await nitems.save()
+
+     await nitems.save()
 
     return res.status(201).json({message : "item created successfuly"})
 }

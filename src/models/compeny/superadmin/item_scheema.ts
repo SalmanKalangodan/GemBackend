@@ -18,7 +18,6 @@ const item_scheema = new mongoose.Schema({
     },
     Manufacturer : {
         type :String,
-        required : true,
         ref : ""
     },
     Brand :{
