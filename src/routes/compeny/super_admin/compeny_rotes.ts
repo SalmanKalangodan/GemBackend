@@ -13,9 +13,9 @@ router.post('/registers',trycatch(compony_register))
 router.post('/logins',trycatch(login_compeny))
 router.post('/create/users',auth,trycatch(create_user))
 // items route
-router.get('/create/prid',auth,trycatch(create_pr_id))
-router.post("/create/items",auth,trycatch(create_items))
-router.get('/getitems',auth,trycatch(get_items))
+router.get('/create/prid',trycatch(create_pr_id))
+router.post("/create/items",trycatch(create_items))
+router.get('/getitems',trycatch(get_items))
 
 export default router
 
